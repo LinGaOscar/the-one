@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>The - One</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../static/css/font-awesome.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css"/>
+    <script type="text/javascript" th:src="@{/js/vue-2.6.14.js}" src="../static/js/vue-2.6.14.js"></script>
+    <script type="text/javascript" th:src="@{/js/jquery-3.6.0.min.js}" src="../static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"
+            src="../static/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- top navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar"
+                    aria-controls="offcanvasExample">
+                <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
+            </button>
+            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href=".">DashBoard</a>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle ms-2"
+                       href="#" role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <i class="bi bi-person-fill"> User Name </i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- top navigation bar -->
+    <!-- sidebar -->
+    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
+        <div class="offcanvas-body p-0">
+            <nav class="navbar-dark">
+
+                <ul v-for="(values,name,index) in sideBars" class="navbar-nav">
+                    <div class="text-muted small fw-bold text-uppercase px-3">
+                        <a data-bs-toggle="collapse" :href="'#layouts'+index" class="nav-link dropdown-toggle px-3">
+                           <span>
+                               {{values.name}}
+                           </span>
+                        </a>
+                    </div>
+
+                    <div class="collapse" :id="'layouts'+index">
+                        <li v-for="(value,name) in values.list">
+                            <a href="#" class="nav-link px-3" @click="pageLoad(name)">
+                                <span>{{value}}</span>
+                            </a>
+                        </li>
+                    </div>
+
+                    <li class="my-2">
+                        <hr class="dropdown-divider bg-light">
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- sidebar -->
+    <!-- content -->
+    <main class="mt-5 pt-3">
+        <div class="container-fluid">
+            <div class="row" id="add">
+            </div>
+        </div>
+    </main>
+</div>
+<script>
+    // $('#add').load('home');
+    let form = new Vue({
+        el: '#app',
+        data: {
+            sideBars: {
+                system_setting: {
+                    name: '系統管理',
+                    list: {
+                        user_list: '使用者清單',
+                        group_setting: '群組設定'
+                    },
+                },
+                task_setting: {
+                    name: '任務管理',
+                    list: {
+                        task_list: '工作清單'
+                    },
+                },
+                report_output: {
+                    name: '報告輸出',
+                    list: {
+                        task_chart: '報告圖表',
+                        output_update: '輸出更新'
+                    },
+                },
+            }
+        },
+        methods: {
+            pageLoad(name) {
+              $('#add').load(name);
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

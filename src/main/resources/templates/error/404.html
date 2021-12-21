@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="../../static/css/font-awesome.min.css"/>
+    <link rel="shortcut icon" href="#" />
+</head>
+<body>
+<div class="container">
+    <h2>Page Not Exist</h2>
+    <p>The path [<code th:text="${#httpServletRequest.getAttribute('javax.servlet.error.request_uri')}"></code>]</p>
+</div>
+<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"
+        src="../../static/js/bootstrap.bundle.min.js"></script>
+<script>
+    //location.href="http://localhost:8080/login";
+</script>
+</body>
+</html>
