@@ -17,7 +17,8 @@ public class Group {
     @Column(name = "name")
     private String groupName;
 
-    @Column(name = "functions")
-    private String groupFunctions;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Function> functions;
 
 }

@@ -30,6 +30,8 @@ public class JPATest {
 
     private DefinitionRepository definitionRepository;
 
+    private FunctionRepository functionRepository;
+
     @Autowired
     public void autoWired(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
@@ -55,6 +57,10 @@ public class JPATest {
         this.definitionRepository = definitionRepository;
     }
 
+    @Autowired
+    public void autoWired(FunctionRepository functionRepository) {
+        this.functionRepository = functionRepository;
+    }
 
     @Test
     public void add() {
@@ -80,8 +86,16 @@ public class JPATest {
 //        department.setDivision(division);
 //        departmentRepository.save(department);
 
+        Function function=new Function();
+        function.setFunctionId("task_chart");
+        function.setFunctionName("報告圖表");
+        function.setIsFolder("N");
+        function.setUpLevel("report_output");
+        function.setSortNo("1");
+        functionRepository.save(function);
+
         Group group = new Group();
-        group.setGroupId(6);
+//        group.setGroupId(6);
 //        group.setGroupName("boss");
 //        group.setGroupFunctions("A,B,C,D");
 //        groupRepository.save(group);
@@ -94,13 +108,13 @@ public class JPATest {
 //        user.setGroup(group);
 //        userRepository.save(user);
 
-        Definition definition = new Definition();
-        definition.setDefinitionId("100");
-        definition.setDefinition("圖表顯示");
-        definition.setTableName("group_list");
-        definition.setColumnName("");
-        definition.setColumnValue("");
-        definitionRepository.save(definition);
+//        Definition definition = new Definition();
+//        definition.setDefinitionId("100");
+//        definition.setDefinition("圖表顯示");
+//        definition.setTableName("group_list");
+//        definition.setColumnName("");
+//        definition.setColumnValue("");
+//        definitionRepository.save(definition);
     }
 
     @Test
@@ -126,7 +140,7 @@ public class JPATest {
     }
 
     @Test
-    public void check(){
+    public void check() {
         Table table = User.class.getAnnotation(Table.class);
         String tableName = table.name();
 
