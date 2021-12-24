@@ -1,10 +1,9 @@
-package com.oscalin.generics.theone.domain;
+package com.oscalin.generics.theone.entity.domain;
 
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity

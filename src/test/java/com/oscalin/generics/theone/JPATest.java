@@ -1,19 +1,14 @@
 package com.oscalin.generics.theone;
 
-import com.oscalin.generics.theone.domain.*;
-import com.oscalin.generics.theone.repository.*;
-import org.hibernate.annotations.Columns;
+import com.oscalin.generics.theone.entity.domain.*;
+import com.oscalin.generics.theone.entity.repository.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.Column;
 import javax.persistence.Table;
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest

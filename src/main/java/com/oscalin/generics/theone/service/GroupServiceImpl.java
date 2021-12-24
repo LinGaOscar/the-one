@@ -1,7 +1,7 @@
 package com.oscalin.generics.theone.service;
 
-import com.oscalin.generics.theone.domain.Group;
-import com.oscalin.generics.theone.repository.GroupRepository;
+import com.oscalin.generics.theone.entity.domain.Group;
+import com.oscalin.generics.theone.entity.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

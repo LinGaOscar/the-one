@@ -1,6 +1,6 @@
 package com.oscalin.generics.theone.service;
 
-import com.oscalin.generics.theone.domain.Group;
+import com.oscalin.generics.theone.entity.domain.Group;
 
 import java.util.List;
 

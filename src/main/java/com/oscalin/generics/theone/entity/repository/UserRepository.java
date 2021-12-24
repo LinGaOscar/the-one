@@ -1,6 +1,6 @@
-package com.oscalin.generics.theone.repository;
+package com.oscalin.generics.theone.entity.repository;
 
-import com.oscalin.generics.theone.domain.User;
+import com.oscalin.generics.theone.entity.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.oscalin.generics.theone.domain;
+package com.oscalin.generics.theone.entity.domain;
 
 import lombok.Data;
 
