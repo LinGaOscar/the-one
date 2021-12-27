@@ -28,7 +28,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group findGroupById(Long id) {
+    public Group findGroupById(String id) {
         return groupRepository.findById(id).orElse(null);
     }
 
@@ -38,7 +38,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void deleteGroup(Long id) {
+    public void deleteGroup(String id) {
         groupRepository.deleteById(id);
     }
 }

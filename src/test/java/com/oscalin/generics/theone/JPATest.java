@@ -9,7 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -65,11 +67,11 @@ public class JPATest {
 //        divisionRepository.save(division);
 
 
-        Department department = new Department();
+//        Department department = new Department();
 //        department.setDepartmentId("D0530100");
 //        department.setDepartmentName("ERP系統部");
 
-        department.setDepartmentId("D0570100");
+//        department.setDepartmentId("D0570100");
 //        department.setDepartmentName("企業行動技術部");
 
 //        department.setDepartmentId("D0520900");
@@ -83,17 +85,24 @@ public class JPATest {
 
         Function function=new Function();
         function.setFunctionId("task_chart");
-        function.setFunctionName("報告圖表");
-        function.setIsFolder("N");
-        function.setUpLevel("report_output");
+//        function.setFunctionName("報告圖表");
+//        function.setIsFolder("N");
+//        function.setUpLevel("report_output");
         function.setSortNo("1");
-        functionRepository.save(function);
+//        functionRepository.save(function);
+
+        Function function2=new Function();
+        function.setFunctionId("sideBars");
+        Set<Function> functions = new HashSet<>();
+        functions.add(function);
+
+        functions.add(function2);
+
 
         Group group = new Group();
-//        group.setGroupId(6);
-//        group.setGroupName("boss");
-//        group.setGroupFunctions("A,B,C,D");
-//        groupRepository.save(group);
+        group.setGroupId("100");
+        group.setGroupName("boss");
+        groupRepository.save(group);
 
 //        User user = new User();
 //        user.setUserId("100");
