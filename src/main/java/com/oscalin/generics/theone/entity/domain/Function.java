@@ -19,11 +19,11 @@ public class Function {
     @Column(name = "name")
     private String functionName;
 
-    @Column(name = "is_folder")
-    private String isFolder;
+    @Column(name = "menu_level")
+    private long menuLevel;
 
     @Column(name = "up_level")
-    private  String upLevel;
+    private String upLevel;
 
     @Column(name = "sort_no")
     private String sortNo;

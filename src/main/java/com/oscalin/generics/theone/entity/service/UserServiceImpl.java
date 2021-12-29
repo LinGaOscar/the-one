@@ -1,4 +1,4 @@
-package com.oscalin.generics.theone.service;
+package com.oscalin.generics.theone.entity.service;
 
 import com.oscalin.generics.theone.entity.domain.User;
 import com.oscalin.generics.theone.entity.repository.UserRepository;

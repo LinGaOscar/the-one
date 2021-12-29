@@ -48,23 +48,23 @@
         <div class="offcanvas-body p-0">
             <nav class="navbar-dark">
 
-                <ul v-for="(values,name,index) in sideBars" class="navbar-nav">
-                    <div class="text-muted small fw-bold text-uppercase px-3">
+                <ul v-for="values in menuLevel" class="navbar-nav">
+                    <div class="text-muted small fw-bold text-uppercase px-3" v-for="(item, index) in menu">
                         <a data-bs-toggle="collapse" :href="'#layouts'+index" class="nav-link dropdown-toggle px-3">
                            <span>
-                               {{values.name}}
+                               {{values}}  {{item.functionName}}  {{index}}
                            </span>
                         </a>
                     </div>
-
-                    <div class="collapse" :id="'layouts'+index">
-                        <li v-for="(value,name) in values.list">
-                            <a href="#" class="nav-link px-3" @click="pageLoad(name)">
-                                <span>{{value}}</span>
-                            </a>
-                        </li>
-                    </div>
-
+                    <!--
+                                        <div class="collapse" :id="'layouts'+index">
+                                            <li v-for="(value,name) in values.list">
+                                                <a href="#" class="nav-link px-3" @click="pageLoad(name)">
+                                                    <span>{{value}}</span>
+                                                </a>
+                                            </li>
+                                        </div>
+                    -->
                     <li class="my-2">
                         <hr class="dropdown-divider bg-light">
                     </li>
@@ -86,6 +86,8 @@
     let form = new Vue({
         el: '#app',
         data: {
+            menuTemp: "",
+            menuLevelTemp:[],
             sideBars: {
                 system_setting: {
                     name: '系統管理',
@@ -111,7 +113,35 @@
         },
         methods: {
             pageLoad(name) {
-              $('#add').load(name);
+                $('#add').load(name);
+            },
+            getMenu() {
+                $.get('/api/menu').done(resp => {
+                    this.menuTemp = resp;
+
+                }).fail(resp => {
+                    console.log(resp);
+                });
+            }
+        },
+        created() {
+            this.getMenu();
+        },
+        computed: {
+            menu: function () {
+                let temp = [];
+                this.menuTemp.forEach(r => {
+                    this.menuLevelTemp.push(r.menuLevel);
+                    temp.push(r);
+                });
+                return temp;
+            },
+            menuLevel: function () {
+                let temp = [];
+                temp = this.menuLevelTemp.filter(function (ele, index, arr) {
+                    return arr.indexOf(ele) === index;
+                });
+                return temp;
             }
         }
     })

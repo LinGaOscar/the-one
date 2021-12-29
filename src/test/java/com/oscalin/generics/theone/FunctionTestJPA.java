@@ -30,54 +30,49 @@ public class FunctionTestJPA {
     @Test
     public void add() {
 
-        Function function=new Function();
-        function.setFunctionId("sideBars");
-        function.setFunctionName("側欄選單");
-        function.setIsFolder("Y");
-        function.setUpLevel("");
-        function.setSortNo("1");
+        Function function = new Function();
 
 //        function.setFunctionId("system_setting");
 //        function.setFunctionName("系統管理");
-//        function.setIsFolder("Y");
-//        function.setUpLevel("sideBars");
+//        function.setUpLevel("");
+//        function.setMenuLevel(1);
 //        function.setSortNo("1");
-//
+
 //        function.setFunctionId("task_setting");
 //        function.setFunctionName("任務管理");
-//        function.setIsFolder("Y");
-//        function.setUpLevel("sideBars");
+//        function.setMenuLevel(1);
+//        function.setUpLevel("");
 //        function.setSortNo("2");
-//
+
 //        function.setFunctionId("report_output");
 //        function.setFunctionName("報告輸出");
-//        function.setIsFolder("Y");
-//        function.setUpLevel("sideBars");
+//        function.setMenuLevel(1);
+//        function.setUpLevel("");
 //        function.setSortNo("3");
-//
+
 //        function.setFunctionId("user_list");
 //        function.setFunctionName("使用者清單");
-//        function.setIsFolder("N");
+//        function.setMenuLevel(2);
 //        function.setUpLevel("system_setting");
 //        function.setSortNo("1");
-//
+
 //        function.setFunctionId("group_setting");
 //        function.setFunctionName("群組設定");
-//        function.setIsFolder("N");
+//        function.setMenuLevel(2);
 //        function.setUpLevel("system_setting");
 //        function.setSortNo("2");
-//
+
 //        function.setFunctionId("task_chart");
 //        function.setFunctionName("報告圖表");
-//        function.setIsFolder("N");
+//        function.setMenuLevel(2);
 //        function.setUpLevel("report_output");
 //        function.setSortNo("1");
-//
-//        function.setFunctionId("task_list");
-//        function.setFunctionName("工作清單");
-//        function.setIsFolder("N");
-//        function.setUpLevel("task_setting");
-//        function.setSortNo("1");
+
+        function.setFunctionId("task_list");
+        function.setFunctionName("工作清單");
+        function.setMenuLevel(2);
+        function.setUpLevel("task_setting");
+        function.setSortNo("1");
 
         functionRepository.save(function);
 
