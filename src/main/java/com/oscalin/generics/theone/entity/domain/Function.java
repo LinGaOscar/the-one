@@ -27,4 +27,6 @@ public class Function {
 
     @Column(name = "sort_no")
     private String sortNo;
+
+
 }

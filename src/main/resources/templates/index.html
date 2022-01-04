@@ -48,23 +48,24 @@
         <div class="offcanvas-body p-0">
             <nav class="navbar-dark">
 
-                <ul v-for="values in menuLevel" class="navbar-nav">
-                    <div class="text-muted small fw-bold text-uppercase px-3" v-for="(item, index) in menu">
-                        <a data-bs-toggle="collapse" :href="'#layouts'+index" class="nav-link dropdown-toggle px-3">
+                <ul v-for="(values,index) in menu" class="navbar-nav">
+                    <div class="text-muted small fw-bold text-uppercase px-3">
+                        <a data-bs-toggle="collapse" :href="'#layouts'+values.functionId"
+                           class="nav-link dropdown-toggle px-3">
                            <span>
-                               {{values}}  {{item.functionName}}  {{index}}
+                               {{values.functionName}}
                            </span>
                         </a>
                     </div>
-                    <!--
-                                        <div class="collapse" :id="'layouts'+index">
-                                            <li v-for="(value,name) in values.list">
-                                                <a href="#" class="nav-link px-3" @click="pageLoad(name)">
-                                                    <span>{{value}}</span>
-                                                </a>
-                                            </li>
-                                        </div>
-                    -->
+
+                    <div class="collapse" :id="'layouts'+values.functionId">
+                        <li v-for="(value,index) in values.object">
+                            <a href="#" class="nav-link px-3" @click="pageLoad(value.functionId)">
+                                <span>{{value.functionName}}</span>
+                            </a>
+                        </li>
+                    </div>
+
                     <li class="my-2">
                         <hr class="dropdown-divider bg-light">
                     </li>
@@ -82,34 +83,11 @@
     </main>
 </div>
 <script>
-    // $('#add').load('home');
     let form = new Vue({
         el: '#app',
         data: {
             menuTemp: "",
-            menuLevelTemp:[],
-            sideBars: {
-                system_setting: {
-                    name: '系統管理',
-                    list: {
-                        user_list: '使用者清單',
-                        group_setting: '群組設定'
-                    },
-                },
-                task_setting: {
-                    name: '任務管理',
-                    list: {
-                        task_list: '工作清單'
-                    },
-                },
-                report_output: {
-                    name: '報告輸出',
-                    list: {
-                        task_chart: '報告圖表',
-                        output_update: '輸出更新'
-                    },
-                },
-            }
+            menuLevelTemp: [],
         },
         methods: {
             pageLoad(name) {
@@ -118,7 +96,6 @@
             getMenu() {
                 $.get('/api/menu').done(resp => {
                     this.menuTemp = resp;
-
                 }).fail(resp => {
                     console.log(resp);
                 });
@@ -126,25 +103,32 @@
         },
         created() {
             this.getMenu();
+
         },
+
         computed: {
             menu: function () {
                 let temp = [];
-                this.menuTemp.forEach(r => {
-                    this.menuLevelTemp.push(r.menuLevel);
-                    temp.push(r);
-                });
+                if (this.menuTemp) {
+                    this.menuTemp.side_menu.forEach(r => {
+                        if (r.functionId == "system_setting") {
+                            r.object = this.menuTemp.system_setting;
+                        }
+                        if (r.functionId == "task_setting") {
+                            r.object = this.menuTemp.task_setting;
+                        }
+                        if (r.functionId == "report_output") {
+                            r.object = this.menuTemp.report_output;
+                        }
+                    })
+                    temp = this.menuTemp.side_menu;
+                }
+
+                // console.log(temp);
                 return temp;
             },
-            menuLevel: function () {
-                let temp = [];
-                temp = this.menuLevelTemp.filter(function (ele, index, arr) {
-                    return arr.indexOf(ele) === index;
-                });
-                return temp;
-            }
         }
-    })
+    });
 
 </script>
 </body>

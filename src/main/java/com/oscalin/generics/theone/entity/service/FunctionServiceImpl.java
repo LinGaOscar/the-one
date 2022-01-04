@@ -35,4 +35,9 @@ public class FunctionServiceImpl implements FunctionService {
     public List<Function> findAll() {
         return functionRepository.findAll();
     }
+
+    @Override
+    public Map<String,  List<Function>> findAllMap() {
+        return functionRepository.findAllMap();
+    }
 }

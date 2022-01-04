@@ -9,4 +9,6 @@ public interface FunctionService {
     Function saveFunction(Function function);
     Function upDateFunction(Function function);
     List<Function> findAll();
+
+    Map<String, List<Function>>findAllMap();
 }
