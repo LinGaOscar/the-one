@@ -17,7 +17,7 @@ public class Group {
     @Column(name = "name")
     private String groupName;
 
-   @Column(name = "functions")
+    @Column(name = "functions")
     private String functions;
 
 }

@@ -37,11 +37,11 @@ public class UserTestJPA {
         department.setDepartmentId("D0520900");
 
         Group group=new Group();
-        group.setGroupId("6");
+        group.setGroupId("300");
 
         User user = new User();
-        user.setUserId("100");
-        user.setUserName("boss100");
+        user.setUserId("124");
+        user.setUserName("企業網站技術member4");
         user.setIsDelete("N");
         user.setDepartment(department);
         user.setGroup(group);

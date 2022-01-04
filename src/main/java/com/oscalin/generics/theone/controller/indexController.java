@@ -53,56 +53,7 @@ public class indexController {
     @ResponseBody
     public Map<String, List<Function>> getMenu() {
 
-        List<Function> functionList = functionService.findAll();
-
-        Map<String, List<Function>> functionMap = functionService.findAllMap();
-
-//        Map<Long, Function> transactionMap = functionList.stream()
-//                .collect(Collectors.toMap(Function::getFunctionId, Function.identity()));
-//
-//        List sortedlist = new ArrayList();
-//
-//
-//
-//        List sortedMenu1 = new ArrayList();
-//        List sortedMenu2 = new ArrayList();
-//        List sortedMenu3 = new ArrayList();
-//        functionList.forEach(element -> {
-//            if (element.getMenuLevel() == 2) {
-//                switch (element.getUpLevel()) {
-//                    case "system_setting":
-//                        sortedMenu1.add(element);
-//                        break;
-//                    case "task_setting":
-//                        sortedMenu2.add(element);
-//                        break;
-//                    case "report_output":
-//                        sortedMenu3.add(element);
-//                        break;
-//                }
-//            }
-//        });
-//
-//        sortedMenu1.sort(Comparator.comparing(Function::getSortNo));
-//        sortedMenu2.sort(Comparator.comparing(Function::getSortNo));
-//        sortedMenu3.sort(Comparator.comparing(Function::getSortNo));
-//
-//        functionList.forEach(element -> {
-//            if(element.getFunctionId() ==""){
-//
-//            }
-//            if (element.getMenuLevel() == 1) {
-//                sortedlist.add(element);
-//            }
-//        });
-//        System.out.println(sortedlist);
-//        sortedlist.sort(Comparator.comparing(Function::getSortNo));
-//        System.out.println(sortedlist);
-
-
-
-
-        return functionMap;
+        return functionService.findAllMap();
     }
 
 }

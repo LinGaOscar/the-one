@@ -38,9 +38,9 @@ public class GroupTestJPA {
     @Test
     public void add() {
         Group group = new Group();
-        group.setGroupId("400");
-        group.setGroupName("sa");
-        group.setFunctions("sideBars,system_setting,task_setting,report_output,user_list,group_setting,task_chart,task_list");
+        group.setGroupId("9999");
+        group.setGroupName("admin");
+        group.setFunctions("system_setting,task_setting,report_output,user_list,group_setting,task_chart,task_list");
         groupRepository.save(group);
 
     }
