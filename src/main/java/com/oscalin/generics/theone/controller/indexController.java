@@ -11,13 +11,6 @@ import java.util.*;
 
 @Controller
 public class indexController {
-    private FunctionServiceImpl functionService;
-
-
-    @Autowired
-    public void autoWired(FunctionServiceImpl functionService) {
-        this.functionService = functionService;
-    }
 
     @GetMapping({"/", "/index"})
     public String indexPage() {
@@ -49,11 +42,6 @@ public class indexController {
         return "pages/output_update";
     }
 
-    @GetMapping("/api/menu")
-    @ResponseBody
-    public Map<String, List<Function>> getMenu() {
 
-        return functionService.findAllMap();
-    }
 
 }

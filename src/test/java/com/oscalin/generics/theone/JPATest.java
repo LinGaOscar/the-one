@@ -25,8 +25,6 @@ public class JPATest {
 
     private DivisionRepository divisionRepository;
 
-    private DefinitionRepository definitionRepository;
-
     private FunctionRepository functionRepository;
 
     @Autowired
@@ -47,11 +45,6 @@ public class JPATest {
     @Autowired
     public void autoWired(DivisionRepository divisionRepository) {
         this.divisionRepository = divisionRepository;
-    }
-
-    @Autowired
-    public void autoWired(DefinitionRepository definitionRepository) {
-        this.definitionRepository = definitionRepository;
     }
 
     @Autowired
